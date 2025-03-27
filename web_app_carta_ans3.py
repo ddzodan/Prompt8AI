@@ -43,6 +43,14 @@ if uploaded_files:
 
     # Copia o script original para o diretório temporário
 
+    # Copia o script original para o diretório temporário
+    original_script_path = "/mount/src/prompt8ai/agentic_carta_ans_FINAL_COM_GERACAO_CARTA12.py"
+    script_temp_path = os.path.join(temp_dir, "script.py")
+    shutil.copy(original_script_path, script_temp_path)
+
+    # Executa o script como subprocesso
+    result = subprocess.run(["python3", script_temp_path], capture_output=True, text=True)
+    
     st.success("✅ Carta gerada com sucesso!")
     st.subheader("📝 Resultado:")
     st.code(result.stdout, language="markdown")
