@@ -1,10 +1,5 @@
 
 import os
-os.environ["OPENAI_API_KEY"] = "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"
-os.environ["PINECONE_API_KEY"] = "pcsk_4X3FZh_AR8L2nJH4HDsWEB2rq9CtHrBfvWYfAhWd5JMkCgudebpBwhqCzrCoFRbFPZhR5p"
-
-
-import os
 from openai import OpenAI
 from pinecone import Pinecone
 from PyPDF2 import PdfReader
