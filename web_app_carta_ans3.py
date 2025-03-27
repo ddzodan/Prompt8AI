@@ -43,10 +43,6 @@ if uploaded_files:
 
     # Copia o script original para o diretório temporário
 
-    # Substitui o caminho ~/Downloads/documentos_ans pelo caminho temporário
-    script_code = script_code.replace('os.path.expanduser("~/Downloads/documentos_ans")', f'"{documentos_ans_path}"')
-    script_code = script_code.replace('dotenv_path=os.path.expanduser("~/Downloads/.env")', f'dotenv_path="{env_path}"')
-
     st.success("✅ Carta gerada com sucesso!")
     st.subheader("📝 Resultado:")
     st.code(result.stdout, language="markdown")
