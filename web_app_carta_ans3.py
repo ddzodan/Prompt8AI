@@ -49,7 +49,7 @@ if uploaded_files:
     shutil.copy(original_script_path, script_temp_path)
 
     # Executa o script como subprocesso
-    result = subprocess.run(["python3", script_temp_path, documentos_ans_path], capture_output=True, text=True)    
+    result = subprocess.run(["python3", script_temp_path, documentos_ans_path], capture_output=True, text=True)
     st.success("✅ Carta gerada com sucesso!")
     st.subheader("📝 Resultado:")
     st.code(result.stdout, language="markdown")
