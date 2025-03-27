@@ -42,24 +42,10 @@ if uploaded_files:
             f.write("PINECONE_INDEX_NAME=flowiseans2\n")
 
     # Copia o script original para o diretório temporário
-    original_script_path = "/Users/diegodzodan/Downloads/agentic_carta_ans_FINAL_COM_GERACAO_CARTA12.py"
-    script_temp_path = os.path.join(temp_dir, "script.py")
-    shutil.copy(original_script_path, script_temp_path)
-
-    # Altera caminho no script se necessário
-    with open(script_temp_path, "r") as f:
-        script_code = f.read()
 
     # Substitui o caminho ~/Downloads/documentos_ans pelo caminho temporário
     script_code = script_code.replace('os.path.expanduser("~/Downloads/documentos_ans")', f'"{documentos_ans_path}"')
     script_code = script_code.replace('dotenv_path=os.path.expanduser("~/Downloads/.env")', f'dotenv_path="{env_path}"')
-
-    # Salva alterações
-    with open(script_temp_path, "w") as f:
-        f.write(script_code)
-
-    # Executa o script como subprocesso
-    result = subprocess.run(["python3", script_temp_path], capture_output=True, text=True)
 
     st.success("✅ Carta gerada com sucesso!")
     st.subheader("📝 Resultado:")
