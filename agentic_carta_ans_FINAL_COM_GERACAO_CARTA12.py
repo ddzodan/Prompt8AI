@@ -238,4 +238,5 @@ carta_final = carta_final.replace("[número da demanda]", demanda)
 
 print("\n===== CARTA FINAL COM CAMPOS PREENCHIDOS =====\n")
 print(carta_final)
-
+print("===== CARTA FINAL COM CAMPOS PREENCHIDOS =====")
+print(carta_final)
