@@ -76,7 +76,8 @@ Texto:
     return resposta.choices[0].message.content.strip()
 
 # Caminho da pasta
-pasta = os.path.expanduser("~/Downloads/documentos_ans")
+import sys
+pasta = sys.argv[1]
 arquivos = sorted(list(set([f for f in os.listdir(pasta) if f.endswith(".pdf")])))
 
 
