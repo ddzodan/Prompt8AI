@@ -6,7 +6,7 @@ from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 
 import sys
-dotenv_path = os.path.join(sys.argv[2]) if len(sys.argv) > 2 else ".env"
+dotenv_path = sys.argv[2] if len(sys.argv) > 2 else ".env"
 load_dotenv(dotenv_path=dotenv_path)
 
 todos_os_dados_extraidos = []
