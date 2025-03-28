@@ -4,28 +4,33 @@ from openai import OpenAI
 from pinecone import Pinecone
 from PyPDF2 import PdfReader
 from dotenv import load_dotenv
-
 import sys
+
+# Carrega .env
 dotenv_path = sys.argv[2] if len(sys.argv) > 2 else ".env"
 load_dotenv(dotenv_path=dotenv_path)
 
-print("✅ .env carregado de:", dotenv_path)
-print("🔑 PINECONE_API_KEY lido:", os.getenv("PINECONE_API_KEY")[:8] + "...")
-print("📍 PINECONE_HOST:", PINECONE_HOST)
-
-todos_os_dados_extraidos = []
-
+# Pega as variáveis do .env
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_ENVIRONMENT = os.getenv("PINECONE_ENVIRONMENT")
 PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME")
+PINECONE_HOST = os.getenv("PINECONE_HOST")
 
-if not all([OPENAI_API_KEY, PINECONE_API_KEY, PINECONE_ENVIRONMENT, PINECONE_INDEX_NAME]):
+# Debug
+print("✅ .env carregado de:", dotenv_path)
+print("🔑 PINECONE_API_KEY lido:", PINECONE_API_KEY[:8] + "...")
+print("📍 PINECONE_HOST:", PINECONE_HOST)
+
+todos_os_dados_extraidos = []
+
+# Verifica se está tudo certo
+if not all([OPENAI_API_KEY, PINECONE_API_KEY, PINECONE_ENVIRONMENT, PINECONE_INDEX_NAME, PINECONE_HOST]):
     raise ValueError("⚠️ Erro: Uma ou mais variáveis de ambiente não foram carregadas corretamente do .env.")
 
+# Inicializa clientes
 client = OpenAI(api_key=OPENAI_API_KEY)
 pc = Pinecone(api_key=PINECONE_API_KEY)
-PINECONE_HOST = os.getenv("PINECONE_HOST")
 index = pc.Index(PINECONE_INDEX_NAME, host=PINECONE_HOST)
 
 from PyPDF2 import PdfReader
