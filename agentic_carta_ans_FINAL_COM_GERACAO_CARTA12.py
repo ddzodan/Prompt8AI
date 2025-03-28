@@ -21,7 +21,8 @@ if not all([OPENAI_API_KEY, PINECONE_API_KEY, PINECONE_ENVIRONMENT, PINECONE_IND
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 pc = Pinecone(api_key=PINECONE_API_KEY)
-index = pc.Index("flowiseans2")
+PINECONE_HOST = "https://flowiseans2-6g61sgp.svc.aped-4627-b74a.pinecone.io"
+index = pc.Index("flowiseans2", host=PINECONE_HOST)
 
 from PyPDF2 import PdfReader
 from PIL import Image
