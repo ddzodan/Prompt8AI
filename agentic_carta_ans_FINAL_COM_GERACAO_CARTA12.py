@@ -5,7 +5,9 @@ from pinecone import Pinecone
 from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path=os.path.expanduser("~/Downloads/.env"))
+import sys
+dotenv_path = os.path.join(sys.argv[2]) if len(sys.argv) > 2 else ".env"
+load_dotenv(dotenv_path=dotenv_path)
 
 todos_os_dados_extraidos = []
 
