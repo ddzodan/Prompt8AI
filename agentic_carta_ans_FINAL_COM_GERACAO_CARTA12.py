@@ -18,11 +18,17 @@ PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME")
 PINECONE_HOST = os.getenv("PINECONE_HOST")
 
 # Debug
+# Lê as variáveis do .env
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+PINECONE_ENVIRONMENT = os.getenv("PINECONE_ENVIRONMENT")
+PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME")
+PINECONE_HOST = os.getenv("PINECONE_HOST")
+
+# Debug (depois de carregar tudo!)
 print("✅ .env carregado de:", dotenv_path)
 print("🔑 PINECONE_API_KEY lido:", PINECONE_API_KEY[:8] + "...")
 print("📍 PINECONE_HOST:", PINECONE_HOST)
-
-todos_os_dados_extraidos = []
 
 # Verifica se está tudo certo
 if not all([OPENAI_API_KEY, PINECONE_API_KEY, PINECONE_ENVIRONMENT, PINECONE_INDEX_NAME, PINECONE_HOST]):
