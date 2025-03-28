@@ -9,6 +9,10 @@ import sys
 dotenv_path = sys.argv[2] if len(sys.argv) > 2 else ".env"
 load_dotenv(dotenv_path=dotenv_path)
 
+print("✅ .env carregado de:", dotenv_path)
+print("🔑 PINECONE_API_KEY lido:", os.getenv("PINECONE_API_KEY")[:8] + "...")
+print("📍 PINECONE_HOST:", PINECONE_HOST)
+
 todos_os_dados_extraidos = []
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
